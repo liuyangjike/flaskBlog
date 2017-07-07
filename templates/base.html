@@ -1,0 +1,138 @@
+{% extends 'bootstrap/base.html' %}
+{% block title %}超子博客{% endblock %}
+{% block styles %}
+    {{ super() }}
+
+    <link rel="stylesheet"
+          href='../static/css/bootstrap.min.css'>
+    <style>
+        .container {
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 30px;
+            padding-right: 30px;
+        }
+
+        .container_top {
+            padding-left:45 px;
+            padding-right: 45px;
+            padding-top: 60px;
+        }
+
+        .newPos {
+            position: fixed;
+            right: 0;
+            left: 0;
+            z-index: 1030;
+        }
+
+        .newFooter {
+            margin-top: 50px;
+            margin-bottom: 70px;
+            margin-right: auto;
+            margin-left: auto;
+            padding-left: 75px;
+            padding-right: 45px;
+
+        }
+    .ulClear{
+        list-style-type:none;
+    }
+    .liClear{
+        list-style: none;
+        float: left;
+        padding-right: 10px;
+        padding-top: 10px;
+    }
+    </style>
+{% endblock %}
+
+{% block navbar %}
+    {#    导航栏#}
+    <nav class="navbar navbar-default newPos ">
+        <div class="container-fluid container">
+            <div class="navbar-header">
+                <button type="button" class="navbar-toggle collapsed" data-toggle="collapse"
+                        data-target="#bs-example-navbar-collapse-1">
+                    <span class="sr-only">Toggle navigation</span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                    <span class="icon-bar"></span>
+                </button>
+                <a class="navbar-brand" href="/">超子博客</a>
+            </div>
+
+            <div class="collapse navbar-collapse" id="bs-example-navbar-collapse-1">
+                <ul class="nav navbar-nav">
+                    <li class="dropdown">
+                        <a href='/' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">文章列表
+                            <span class="caret"></span></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Python</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Linux</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Javascript</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">Bootstrap</a></li>
+                            <li class="divider"></li>
+                            <li><a href="#">随笔</a></li>
+                        </ul>
+                    </li>
+                    <li><a href='{{ url_for('about') }}'> 关于超子<span class="sr-only">(current)</span></a></li>
+                    <li><a href='{{ url_for('git') }}' target="view_window" >GitHub</a></li>
+
+                </ul>
+                <ul class="nav navbar-nav navbar-right">
+                    <li><a href="{{ url_for('login') }}">登录</a></li>
+                    <li><a href='{{ url_for('register') }}'>注册</a></li>
+                </ul>
+            </div>
+        </div>
+    </nav>
+{% endblock %}
+
+{% block content %}
+    {#    这是主要内容区块#}
+    <div class="container container_top" >
+    {% block contents %}
+
+    {% endblock %}
+        {#    这是底部的固定内容#}
+    <ul>
+     <div class="jumbotron ">
+            <h2>THANKS</h2>
+         <div class="row ">
+            <div class="col-lg-4"><p>感谢您能访问我的个人网站，希望我写的这些文章能对你有帮助您，可以通过右边的二维码向我投食，谢谢啦  &nbsp;&nbsp;\(^o^)/</p></div>
+            <div class="col-lg-4">
+                <div><img src="../static/img/weixinfukuan.png" height="120px" width="120px" style="margin-left: 85px;margin-right: auto"></div>
+                <div style="margin-left: 115px;margin-right: auto ;margin-top: 15px">微信扫码</div>
+            </div>
+            <div class="col-lg-4">
+                <div><img src="../static/img/zhifubaofukuan.png" height="120px" width="120px" style="margin-left: 85px;margin-right: auto"></div>
+                <div style="margin-left: 110px;margin-right: auto ;margin-top: 15px">支付宝扫码</div>
+            </div>
+         </div>
+            <p><a href="{{ url_for('git') }}" target="view_window" class="btn btn-primary btn-lg">Learn more</a></p>
+    </div>
+    </ul>
+    </div>
+
+    {#    这是页脚#}
+    <footer class="newFooter container ">
+            <div class="row ">
+                <div class="col-lg-6 "  >
+                    <p>Made by <a href="{{ url_for('about') }}" rel="nofollow">张文超 </a>联系邮箱 <a
+                            href="mailto:1095087479@qq.com">1095087479@qq.com</a>.</p>
+                    <p>Code released under the <a href="https://github.com/captainChaozi/flaskBlog">flaskBlog</a>.</p>
+                    <p>Based on <a href="http://www.bootcss.com/" rel="nofollow">Bootstrap</a>. Icons from <a
+                            href="www.bootstrapcdn.com" rel="nofollow">BootstrapCDN</a>. Web fonts from <a
+                            href="http://www.google.com/webfonts" rel="nofollow">Google</a>.</p>
+                </div>
+                <div class="col-lg-6 " >
+                    <a href="/"><img src="../static/img/chaoge.png" width="88px" height="88px" ></a>
+                </div>
+            </div>
+    </footer>
+{% endblock %}
+

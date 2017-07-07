@@ -1,0 +1,57 @@
+{% extends 'base.html' %}
+
+
+{% block contents %}
+
+<ul>
+<form class="form-horizontal " >
+  <fieldset>
+    <legend formFont>注 册</legend>
+    <div class="form-group formFont">
+      <label for="inputEmail" class="col-lg-2 control-label">电子邮箱</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="inputEmail" placeholder="Email">
+      </div>
+    </div>
+    <div class="form-group formFont">
+      <label for="inputUsername" class="col-lg-2 control-label">用 &nbsp;户 &nbsp;名</label>
+      <div class="col-lg-10">
+        <input type="text" class="form-control" id="inputUsername" placeholder="Username">
+      </div>
+    </div>
+    <div class="form-group formFont">
+      <label for="inputPassword" class="col-lg-2 control-label">密 &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;&nbsp;码</label>
+      <div class="col-lg-10">
+        <input type="password" class="form-control" id="inputPassword" placeholder="Password">
+      </div>
+    </div>
+
+    <div class="form-group formFont">
+      <label class="col-lg-2 control-label">性&nbsp; &nbsp;&nbsp;&nbsp;&nbsp;&nbsp;别</label>
+      <div class="col-lg-10">
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios1" value="option1" checked="">
+            男
+          </label>
+        </div>
+        <div class="radio">
+          <label>
+            <input type="radio" name="optionsRadios" id="optionsRadios2" value="option2">
+            女
+          </label>
+        </div>
+      </div>
+    </div>
+    <div class="form-group">
+      <div class="col-lg-10 col-lg-offset-2">
+        <button type="reset" class="btn btn-default">重置</button>
+        <button type="submit" class="btn btn-primary">提交</button>
+      </div>
+    </div>
+
+  </fieldset>
+</form>
+
+</ul>
+{% endblock %}

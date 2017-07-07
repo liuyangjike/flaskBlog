@@ -1,0 +1,71 @@
+{% extends 'base.html' %}
+{% block contents %}
+
+    <ul>
+
+        <ul class="nav nav-tabs container">
+            <li class="active"><a href="#home" data-toggle="tab">欢迎</a></li>
+            <li><a href="#profile" data-toggle="tab">修改资料</a></li>
+            <li><a href="#home" data-toggle="tab">评论记录</a></li>
+            <li><a href="#creatart" data-toggle="tab">发布文章</a></li>
+        </ul>
+        <div id="myTabContent" class="tab-content">
+            <div class="tab-pane fade active in" id="home">
+                <div style="margin-top: 220px;margin-bottom: 220px;margin-right: autopx;margin-left: 400px;">
+                    <h1>你好，用户名</h1>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="profile">
+                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation
+                    +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
+                    craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
+                    ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus
+                    mollit.Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+                    Exercitation
+                    +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
+                    craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
+                    ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus
+                    mollit.Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+                    Exercitation
+                    +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
+                    craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
+                    ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus
+                    mollit.Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+                    Exercitation
+                    +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
+                    craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
+                    ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus
+                    mollit.Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
+                    Exercitation
+                    +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
+                    craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
+                    ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus
+                    mollit.</p>
+            </div>
+            <div class="tab-pane fade" id="creatart">
+                <form action="{{ url_for('add_artical') }}" method="post" style="height: 500px">
+                    <!-- 加载编辑器的容器 -->
+                    <script id="container" name="content" type="text/plain" style="height: 400px">
+
+                    </script>
+                    <div class="col-lg-10 " style="padding-left: 0px;padding-top: 5px">
+                        <button type="reset" class="btn btn-default">重置</button>
+                        <button type="submit" class="btn btn-primary">提交</button>
+                    </div>
+                </form>
+
+                <!-- 配置文件 -->
+                <script type="text/javascript" src="../static/utf8-jsp/ueditor.config.js"></script>
+                <!-- 编辑器源码文件 -->
+                <script type="text/javascript" src="../static/utf8-jsp/ueditor.all.js"></script>
+                <!-- 实例化编辑器 -->
+                <script type="text/javascript">
+                    var ue = UE.getEditor('container');
+                </script>
+
+            </div>
+        </div>
+    </ul>
+
+{% endblock %}
+
