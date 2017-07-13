@@ -1,10 +1,12 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from start import *
-from flask import redirect, render_template,request
+from flask import redirect, render_template,request,jsonify
+
 
 @app.route('/')
 def hello_world():
+
     return render_template('index.html')
 
 
@@ -44,8 +46,14 @@ def admin():
 
 @app.route('/addart',methods=['POST'])
 def add_artical():
-    thehtml=request.form.get('content').encode('utf-8')
-    return  thehtml
+    thehtml=request.form.get('content')
+    return  render_template('artical.html',thehtml=thehtml)
+
+@app.route('/comment',methods=['POST'])
+def comment():
+    user_comment=request.form.get("content")
+    d = {'comment':user_comment}
+    return jsonify(d)
 
 
 

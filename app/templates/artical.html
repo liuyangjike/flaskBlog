@@ -1,5 +1,62 @@
 {% extends 'base.html' %}
+{% block head %}
+    {{ super() }}
+    <script src="../static/jquery.min.js"></script>
+{% endblock %}
 {% block contents %}
+    <ul>
+        <li class="breadcrumb">
+            <div>{{ thehtml|safe }}</div>
+        </li>
+
+    </ul>
+    <ul>
+        <form class="form-horizontal " action="{{ url_for('comment') }}" method="post" >
+            <fieldset>
+                <legend>评论</legend>
+                <div class="form-group">
+                    <div class="col-lg-10">
+                        <textarea class="form-control" rows="3" name="TextArea" id="putcomment"></textarea>
+                        <span class="help-block">写下你的评论吧</span>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2" style="margin-left: 0px" >
+                        <button type="reset" class="btn btn-default" >取消</button>
+                        <button type="button" class="btn btn-primary"  id ='put'>提交</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </ul>
+<ul>
+<div>
+    <blockquote>
+  <p id="comment" style="font-family: Arial"></p>
+  <small>Someone famous in <cite title="Source Title">Source Title</cite></small>
+    </blockquote>
+{#    <div id="comment"></div>#}
+    <script>
+    $(function () {
+
+        $('#put').click(function () {
+
+          content =  $('#putcomment').val();
+            $.post('/comment',{'content':content},function (data) {
+
+                $('#comment').html(data.comment);
+                $('#putcomment').val('')
 
 
+            })
+
+        })
+
+
+    })
+
+    </script>
+</div>
+</ul>
 {% endblock %}
