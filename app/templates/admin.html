@@ -1,7 +1,7 @@
 {% extends 'base.html' %}
 {% block contents %}
 
-    <ul >
+    <ul>
 
         <ul class="nav nav-tabs container">
             <li class="active"><a href="#home" data-toggle="tab">欢迎</a></li>
@@ -42,15 +42,48 @@
                     ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus
                     mollit.</p>
             </div>
-            <div class="tab-pane fade " id="creatart">
-                <form action="{{ url_for('add_artical') }}" method="post" style="height: 500px">
+            <div class="tab-pane fade" id="creatart">
+                <form action="{{ url_for('add_artical') }}" method="post" style="height: 850px">
                     <!-- 加载编辑器的容器 -->
-                    <script id="container" name="content" type="text/plain" style="height: 400px">
+                                        <script id="container" name="content" type="text/plain" style="height: 400px">
 
-                    </script>
+                                        </script>
+                    <div class="col-lg-10 " style="padding-left: 0px;padding-top: 15px">
+                        <div class="form-group">
+                            <label for="textArea" class="col-lg-2 control-label">文章标题</label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control" rows="1" id="title" name='artical_title'></textarea>
+                                <span class="help-block">请输入文章的标题</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 " style="padding-left: 0px;padding-top: 15px">
+                        <div class="form-group">
+                            <label for="textArea" class="col-lg-2 control-label">文章摘要</label>
+                            <div class="col-lg-10">
+                                <textarea class="form-control" rows="3" id="summary" name='artical_summary'></textarea>
+                                <span class="help-block">请输入文章的摘要</span>
+                            </div>
+                        </div>
+                    </div>
+                    <div class="col-lg-10 " style="padding-left: 0px;padding-top: 15px">
+                        <div class="form-group">
+                            <label for="select" class="col-lg-2 control-label">文章分类</label>
+                            <div class="col-lg-10">
+                                <select class="form-control" id="select" name='artical_class'>
+                                    <option value=1  >python</option>
+                                    <option value=2>web框架</option>
+                                    <option value=3>前端</option>
+                                    <option value=4 >编程</option>
+                                    <option value=5>我执</option>
+                                </select>
+                                <br>
+                            </div>
+                        </div>
+                    </div>
                     <div class="col-lg-10 " style="padding-left: 0px;padding-top: 5px">
                         <button type="reset" class="btn btn-default">重置</button>
-                        <button type="submit" class="btn btn-primary">发布</button>
+                        <button type="submit" class="btn btn-primary">提交</button>
                     </div>
                 </form>
 

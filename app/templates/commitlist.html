@@ -1,0 +1,21 @@
+{% extends 'base.html' %}
+
+{% block contents %}
+
+    <ul>
+        <li class="breadcrumb">
+            <div>{{ artical_content|safe }}</div>
+        </li>
+
+    </ul>
+    <ul>
+    {% for comment in comments %}
+        <li>
+            <blockquote>
+                <p id="comment" style="font-family: Arial">{{ comment.comment_content }}</p>
+                <small>Thank You For <cite title="Source Title">Comment</cite></small>
+            </blockquote>
+        </li>
+    {% endfor %}
+    </ul>
+{% endblock %}

@@ -14,7 +14,7 @@
         }
 
         .container_top {
-            padding-left:45 px;
+            padding-left: 45px;
             padding-right: 45px;
             padding-top: 60px;
         }
@@ -35,15 +35,17 @@
             padding-right: 45px;
 
         }
-    .ulClear{
-        list-style-type:none;
-    }
-    .liClear{
-        list-style: none;
-        float: left;
-        padding-right: 10px;
-        padding-top: 10px;
-    }
+
+        .ulClear {
+            list-style-type: none;
+        }
+
+        .liClear {
+            list-style: none;
+            float: left;
+            padding-right: 10px;
+            padding-top: 10px;
+        }
     </style>
 {% endblock %}
 
@@ -68,19 +70,19 @@
                         <a href='/' class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false">文章列表
                             <span class="caret"></span></a>
                         <ul class="dropdown-menu" role="menu">
-                            <li><a href="#">Python</a></li>
+                            <li><a href="{{ url_for('artical_list',artical_class_id=1) }}">Python</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Linux</a></li>
+                            <li><a href="{{ url_for('artical_list',artical_class_id=2) }}">web框架</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Javascript</a></li>
+                            <li><a href="{{ url_for('artical_list',artical_class_id=3) }}">前端</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">Bootstrap</a></li>
+                            <li><a href="{{ url_for('artical_list',artical_class_id=4) }}">编程</a></li>
                             <li class="divider"></li>
-                            <li><a href="#">随笔</a></li>
+                            <li><a href="{{ url_for('artical_list',artical_class_id=5) }}">我执</a></li>
                         </ul>
                     </li>
                     <li><a href='{{ url_for('about') }}'> 关于超子<span class="sr-only">(current)</span></a></li>
-                    <li><a href='{{ url_for('git') }}' target="view_window" >GitHub</a></li>
+                    <li><a href='{{ url_for('git') }}' target="view_window">GitHub</a></li>
 
                 </ul>
                 <ul class="nav navbar-nav navbar-right">
@@ -94,45 +96,48 @@
 
 {% block content %}
     {#    这是主要内容区块#}
-    <div class="container container_top" >
-    {% block contents %}
+    <div class="container container_top">
+        {% block contents %}
 
-    {% endblock %}
+        {% endblock %}
         {#    这是底部的固定内容#}
-    <ul>
-     <div class="jumbotron ">
-            <h2>THANKS</h2>
-         <div class="row ">
-            <div class="col-lg-4"><p>感谢您能访问我的个人网站，希望我写的这些文章能对你有帮助您，可以通过右边的二维码向我投食，谢谢啦  &nbsp;&nbsp;\(^o^)/</p></div>
-            <div class="col-lg-4">
-                <div><img src="../static/img/weixinfukuan.png" height="120px" width="120px" style="margin-left: 85px;margin-right: auto"></div>
-                <div style="margin-left: 115px;margin-right: auto ;margin-top: 15px">微信扫码</div>
+        <ul>
+            <div class="jumbotron ">
+                <h2>THANKS</h2>
+                <div class="row ">
+                    <div class="col-lg-4"><p>感谢您能访问我的个人网站，希望我写的这些文章能对你有帮助您，可以通过右边的二维码向我投食，谢谢啦 &nbsp;&nbsp;\(^o^)/</p>
+                    </div>
+                    <div class="col-lg-4">
+                        <div><img src="../static/img/weixinfukuan.png" height="120px" width="120px"
+                                  style="margin-left: 85px;margin-right: auto"></div>
+                        <div style="margin-left: 115px;margin-right: auto ;margin-top: 15px">微信扫码</div>
+                    </div>
+                    <div class="col-lg-4">
+                        <div><img src="../static/img/zhifubaofukuan.png" height="120px" width="120px"
+                                  style="margin-left: 85px;margin-right: auto"></div>
+                        <div style="margin-left: 110px;margin-right: auto ;margin-top: 15px">支付宝扫码</div>
+                    </div>
+                </div>
+                <p><a href="{{ url_for('git') }}" target="view_window" class="btn btn-primary btn-lg">Learn more</a></p>
             </div>
-            <div class="col-lg-4">
-                <div><img src="../static/img/zhifubaofukuan.png" height="120px" width="120px" style="margin-left: 85px;margin-right: auto"></div>
-                <div style="margin-left: 110px;margin-right: auto ;margin-top: 15px">支付宝扫码</div>
-            </div>
-         </div>
-            <p><a href="{{ url_for('git') }}" target="view_window" class="btn btn-primary btn-lg">Learn more</a></p>
-    </div>
-    </ul>
+        </ul>
     </div>
 
     {#    这是页脚#}
     <footer class="newFooter container ">
-            <div class="row ">
-                <div class="col-lg-6 "  >
-                    <p>Made by <a href="{{ url_for('about') }}" rel="nofollow">张文超 </a>联系邮箱 <a
-                            href="mailto:1095087479@qq.com">1095087479@qq.com</a>.</p>
-                    <p>Code released under the <a href="https://github.com/captainChaozi/flaskBlog">flaskBlog</a>.</p>
-                    <p>Based on <a href="http://www.bootcss.com/" rel="nofollow">Bootstrap</a>. Icons from <a
-                            href="www.bootstrapcdn.com" rel="nofollow">BootstrapCDN</a>. Web fonts from <a
-                            href="http://www.google.com/webfonts" rel="nofollow">Google</a>.</p>
-                </div>
-                <div class="col-lg-6 " >
-                    <a href="/"><img src="../static/img/chaoge.png" width="88px" height="88px" ></a>
-                </div>
+        <div class="row ">
+            <div class="col-lg-6 ">
+                <p>Made by <a href="{{ url_for('about') }}" rel="nofollow">张文超 </a>联系邮箱 <a
+                        href="mailto:1095087479@qq.com">1095087479@qq.com</a>.</p>
+                <p>Code released under the <a href="https://github.com/captainChaozi/flaskBlog">flaskBlog</a>.</p>
+                <p>Based on <a href="http://www.bootcss.com/" rel="nofollow">Bootstrap</a>. Icons from <a
+                        href="www.bootstrapcdn.com" rel="nofollow">BootstrapCDN</a>. Web fonts from <a
+                        href="http://www.google.com/webfonts" rel="nofollow">Google</a>.</p>
             </div>
+            <div class="col-lg-6 ">
+                <a href="/"><img src="../static/img/chaoge.png" width="88px" height="88px"></a>
+            </div>
+        </div>
     </footer>
 {% endblock %}
 

@@ -1,5 +1,46 @@
 {% extends 'base.html' %}
 {% block contents %}
 
+   <ul class=" ulClear">
+    {% for artical in articals %}
+        <li class="jumbotron">
+            <article  class="article-card article-type-post" itemprop="blogPost">
 
+                <div>
+                    <time datetime="2017-06-08T12:05:55.000Z" itemprop="datePublished" class="post-time">
+                        {{ artical.artical_time }}
+                    </time>
+                </div>
+                <h3 itemprop="name">
+                    <a class="post-title-link" href="{{url_for('get_artical',artical_id=artical.artical_id) }}">{{ artical.artical_name }}</a>
+                </h3>
+
+
+                <div id="post-content" itemprop="postContent">
+
+
+                    <P>{{ artical.artical_summary }}</p>
+
+
+                    <a href="{{ url_for('get_artical',artical_id=artical.artical_id) }}" class="post-more waves-effect waves-button">
+                        阅读全文...
+                    </a>
+                </div>
+
+                <div class="post-footer">
+
+                    <ul class=" ulClear" style="padding-left: 0px ;">
+                        <li class=" liClear" style="padding-left: 0px">
+                            <a href="{{url_for('artical_list',artical_class_id=artical.acid)}}">{{ articals_class[0].ac_class }}</a>
+                        </li>
+                    </ul>
+
+                </div>
+
+            </article>
+
+        </li>
+
+    {% endfor %}
+    </ul>
 {% endblock %}

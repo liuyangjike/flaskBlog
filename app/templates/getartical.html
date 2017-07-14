@@ -1,0 +1,82 @@
+{% extends 'base.html' %}
+{% block head %}
+    {{ super() }}
+    <script src="../static/jquery.min.js"></script>
+{% endblock %}
+{% block contents %}
+    <ul>
+        <li class="breadcrumb">
+            <div id="user">{{ a_artical.artical_content|safe }}</div>
+        </li>
+
+    </ul>
+    <ul>
+        <form class="form-horizontal " action="{{ url_for('save_comment') }}" method="post">
+            <fieldset>
+                <legend>评论</legend>
+                <div class="form-group">
+                    <div class="col-lg-10">
+                        <textarea class="form-control" rows="3" name="text_area" id="putcomment"></textarea>
+                        <textarea style='display: none' name="artical_title" value="{{ a_artical.artical_name  }}">{{ a_artical.artical_name  }}</textarea>
+                    </div>
+                </div>
+                <div class="form-group">
+                    <div class="col-lg-10 col-lg-offset-2" style="margin-left: 0px">
+                        <button type="reset" class="btn btn-default">取消</button>
+                        <button type="button" class="btn btn-primary" id='put'>预览</button>
+                        <button type="submit" class="btn btn-success" id="post">发表</button>
+                    </div>
+                </div>
+
+            </fieldset>
+        </form>
+    </ul>
+    <ul>
+        <div>
+            <blockquote>
+                <p id="comment" style="font-family: Arial"></p>
+                <small>Thank You For <cite title="Source Title">Comment</cite></small>
+            </blockquote>
+            {#    <div id="comment"></div>#}
+            <script>
+                $(function () {
+
+                    $('#put').click(function () {
+
+                        content = $('#putcomment').val();
+                        $.post('/comment', {'content': content}, function (data) {
+
+                            $('#comment').html(data.comment);
+
+
+                        })
+
+                    })
+
+
+                })
+
+            </script>
+{#                    <script>#}
+{#                $(function () {#}
+{##}
+{#                    $('#post').click(function () {#}
+{##}
+{#                        content = $('#putcomment').val();#}
+{#                        user=$('#user').html();#}
+{#                        $.post('/savecomment', {'content': content,'user':user}, function (data) {#}
+{##}
+{#                            $('#comment').html(data.comment);#}
+{##}
+{##}
+{#                        })#}
+{##}
+{#                    })#}
+{##}
+{##}
+{#                })#}
+{##}
+{#            </script>#}
+        </div>
+    </ul>
+{% endblock %}

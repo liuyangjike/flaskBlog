@@ -1,37 +1,30 @@
-
 {% extends 'base.html' %}
-
 {% block contents %}
+    {% set n=0 %}
 
-    <ul class=" ulClear">
+   <ul class=" ulClear">
+    {% for artical in articals %}
+
         <li class="jumbotron">
-            <article id="post-使用Python进行并发编程-PoolExecutor修正篇" class="article-card article-type-post"
-                     itemprop="blogPost">
+            <article  class="article-card article-type-post" itemprop="blogPost">
 
                 <div>
                     <time datetime="2017-06-08T12:05:55.000Z" itemprop="datePublished" class="post-time">
-                        2017-06-08
+                        {{ artical.artical_time }}
                     </time>
-
-
                 </div>
-
-
                 <h3 itemprop="name">
-                    <a class="post-title-link" href="/archives/使用Python进行并发编程-PoolExecutor修正篇/">使用Python进行并发编程-PoolExecutor篇</a>
+                    <a class="post-title-link" href="{{url_for('get_artical',artical_id=artical.artical_id) }}">{{ artical.artical_name }}</a>
                 </h3>
 
 
                 <div id="post-content" itemprop="postContent">
 
 
-                    <P>我在2016年12月12日发布了一篇
-                        使用Python进行并发编程-PoolExecutor篇。其中有个例子中concurrent.futures要比multiprocessing.pool版本的快了1.7倍。看起来还是挺振奋人心的，不过这个数据是完全错误的。在我的博客的文章下，NoAnyLove留言对我表示怀疑，我一翻代码，果然：
-
-                        12results = pool.map(fib, N...</p>
+                    <P>{{ artical.artical_summary }}</p>
 
 
-                    <a href="/archives/使用Python进行并发编程-PoolExecutor修正篇/" class="post-more waves-effect waves-button">
+                    <a href="{{ url_for('get_artical',artical_id=artical.artical_id) }}" class="post-more waves-effect waves-button">
                         阅读全文...
                     </a>
                 </div>
@@ -39,17 +32,10 @@
                 <div class="post-footer">
 
                     <ul class=" ulClear" style="padding-left: 0px ;">
-                        <li class=" liClear" style="padding-left: 0px"
-                        "><a class="article-tag-list-link waves-effect waves-button"
-                             href="/tags/Future/">Future</a></li>
-                        <li class="liClear"><a class="article-tag-list-link waves-effect waves-button"
-                                               href="/tags/PoolExecutor/">PoolExecutor</a></li>
-                        <li class="liClear"><a class="article-tag-list-link waves-effect waves-button"
-                                               href="/tags/multiprocessing/">multiprocessing</a></li>
-                        <li class="liClear"><a class="article-tag-list-link waves-effect waves-button"
-                                               href="/tags/python/">python</a></li>
-                        <li class="liClear"><a class="article-tag-list-link waves-effect waves-button"
-                                               href="/tags/threading/">threading</a></li>
+                        <li class=" liClear" style="padding-left: 0px">
+                            <a href="{{url_for('artical_list',artical_class_id=artical.acid)}}">
+                                {{ Artical_class.query.filter(Artical_class.ac_id==artical.acid).all()[0].ac_class }}</a>
+                        </li>
                     </ul>
 
                 </div>
@@ -57,18 +43,8 @@
             </article>
 
         </li>
+    {% endfor %}
     </ul>
-
 {% endblock %}
-=======
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <title>Title</title>
-</head>
-<body>
 
-</body>
-</html>
->>>>>>> origin/master
+
