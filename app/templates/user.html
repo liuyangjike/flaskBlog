@@ -2,45 +2,93 @@
 {% block contents %}
 
 
-<ul>
+    <ul>
         <ul class="nav nav-tabs container">
             <li class="active"><a href="#home" data-toggle="tab">欢迎</a></li>
-            <li><a href="#profile" data-toggle="tab">修改资料</a></li>
-            <li><a href="#home" data-toggle="tab">评论记录</a></li>
+            <li><a href="#change_password" data-toggle="tab">修改密码</a></li>
+            <li><a href="#comments" data-toggle="tab" id="a_click">评论记录</a></li>
         </ul>
-        <div id="myTabContent" class="tab-content">
+        <div id="myTabContent" class="tab-content"
+             style="margin-top: 120px;margin-bottom: 220px;margin-right: autopx;margin-left: 0x;">
             <div class="tab-pane fade active in" id="home">
-                <div style="margin-top: 220px;margin-bottom: 220px;margin-right: autopx;margin-left: 400px;"><h1>
-                    你好，用户名</h1></div>
-            </div>
-            <div class="tab-pane fade" id="profile">
-                <p>Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid. Exercitation
-                    +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
-                    craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
-                    ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus
-                    mollit.Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-                    Exercitation
-                    +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
-                    craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
-                    ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus
-                    mollit.Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-                    Exercitation
-                    +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
-                    craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
-                    ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus
-                    mollit.Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-                    Exercitation
-                    +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
-                    craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
-                    ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus
-                    mollit.Food truck fixie locavore, accusamus mcsweeney's marfa nulla single-origin coffee squid.
-                    Exercitation
-                    +1 labore velit, blog sartorial PBR leggings next level wes anderson artisan four loko farm-to-table
-                    craft beer twee. Qui photo booth letterpress, commodo enim craft beer mlkshk aliquip jean shorts
-                    ullamco ad vinyl cillum PBR. Homo nostrud organic, assumenda labore aesthetic magna delectus
-                    mollit.</p>
-            </div>
+                <div>
 
+                    <h1>
+                        你好  {{ user_name }}
+
+                    </h1>
+                    <h1 >{{ information }}</h1>
+                </div>
+            </div>
+            <div class="tab-pane fade" id="change_password">
+                <div>
+                    <form action="/change_password" method="POSt">
+                        <fieldset>
+                            <legend>修改密码</legend>
+                             <div class="form-group">
+                                <label for="inputEmail" class="col-lg-2 control-label">邮  箱</label>
+                                <div class="col-lg-10">
+                                    <input type="text" class="form-control" style="margin-bottom: 10px"
+                                           id="inputEmail"
+                                           name="email"
+                                           placeholder="请输邮箱">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputOldPassworld" class="col-lg-2 control-label">原密码</label>
+                                <div class="col-lg-10">
+                                    <input type="password" class="form-control" style="margin-bottom: 10px"
+                                           id="inputOldPassworld"
+                                           name="old_password"
+                                           placeholder="请输入原密码">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <label for="inputPassword" class="col-lg-2 control-label">新密码</label>
+                                <div class="col-lg-10">
+                                    <input type="password" class="form-control" id="inputPassword"
+                                           style="margin-bottom: 10px" placeholder="请输入新密码" name="new_password">
+                                </div>
+                            </div>
+                            <div class="form-group">
+                                <div class="col-lg-10 col-lg-offset-2">
+                                    <button type="reset" class="btn btn-default">取消</button>
+                                    <button type="submit" class="btn btn-primary">提交</button>
+                                </div>
+                            </div>
+                        </fieldset>
+                    </form>
+                </div>
+
+            </div>
+            <div class="tab-pane fade" id="comments">
+
+    {% for comment in comments %}
+
+            <blockquote>
+                <small>{{ user_name }}</small>
+                <p id="comment" style="font-family: Arial">{{ comment.comment_content }}</p>
+                <small>Thank You For <cite title="Source Title">Comment</cite></small>
+            </blockquote>
+
+    {% endfor %}
+            </div>
+{#            <script>#}
+{#                $(function () {#}
+{#                    $('#a_click').click(function () {#}
+{#                        $.post('/get_user_comments', {'name':{{ user_name }}}, function (data) {#}
+{#                            $('#comments').html(data.comments)#}
+{##}
+{##}
+{#                            )#}
+{##}
+{#                    })#}
+{##}
+{#                })#}
+{##}
+{#                })#}
+{#            </script>#}
         </div>
-</ul>
+    </ul>
+
 {% endblock %}

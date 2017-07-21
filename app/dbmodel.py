@@ -1,10 +1,11 @@
 #!/usr/bin/env python
 # -*- coding:utf-8 -*-
 from start import db
+from werkzeug.security import generate_password_hash,check_password_hash
+from flask.ext.login import UserMixin
 
 
-# from sqlalchemy import  Column,Integer,Text,String,ForeignKey
-# from sqlalchemy.orm import relationship
+
 
 
 
@@ -18,19 +19,30 @@ class Role(db.Model):
         self.role_name = role_name
 
 
-class Users(db.Model):
+class Users(UserMixin,db.Model):
     __tablename__ = 'users'
     user_id = db.Column(db.Integer, primary_key=True, autoincrement=True)
     user_name = db.Column(db.String(64), unique=True, nullable=False)
-    password = db.Column(db.String(64), nullable=False)
+    password_hash = db.Column(db.String(256), nullable=False)
     user_email = db.Column(db.String(64), unique=True, nullable=False)
     role_id = db.Column(db.Integer, db.ForeignKey(Role.role_id))
     comments = db.relationship('Comment', backref='user')
 
-    def __init__(self, user_name, password, user_email):
-        self.name = user_name
-        self.password = password
-        self.user_email = user_email
+    # def __init__(self, user_name,  user_email):
+    #     self.user_name = user_name
+    #     # self.password = password
+    #     self.user_email = user_email
+    @property
+    def password(self):
+        raise AttributeError('password is not a readable attribute')
+
+    @password.setter
+    def password(self, password):
+        self.password_hash = generate_password_hash(password)
+
+    def verify_password(self, password):
+        return check_password_hash(self.password_hash, password)
+
 
 
 class Artical_class(db.Model):
@@ -81,13 +93,15 @@ def creatdb():
     db.drop_all()
     db.create_all()
 
-    u1=Users('chaozi','passworld','1095087479@qq.com')
+    u1=Users()
+    u1.user_name=
+    u1.password=
+    u1.user_email=
     db.session.add(u1)
     db.session.commit()
 
-    u2 = Users('chaoge', '123456', '18301951396@qq.com')
-    db.session.add(u2)
-    db.session.commit()
+
+
 
     ac1=Artical_class(u'python')
     db.session.add(ac1)
@@ -117,7 +131,11 @@ def creatdb():
     db.session.add(g_user)
     db.session.commit()
 
+
 if __name__=='__main__':
     creatdb()
+
+
+
 
 
